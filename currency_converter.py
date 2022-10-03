@@ -1,8 +1,5 @@
 # We'll be using the 'requests' library and 'datetime' module from python.
 import requests
-import datetime
-from datetime import datetime
-from datetime import date
 
 # We restrict the type of currencies we can convert from and to. 
 iso_codes = requests.get('https://api.frankfurter.app/currencies')
@@ -36,28 +33,11 @@ while True:
     else:
         break
 
-# Input the date of the currency rate.
-while True:
-    rate_date = str(input("Enter the date you'd like the exchange rate to be on (yyyy-mm-dd): "))
-    try:
-        str_to_date = datetime.strptime(rate_date, '%Y-%m-%d').date()
-    except ValueError as e:
-        print("Error: {}".format(e), end = '\n')
-        print("Please enter a suitable date in the required format.")
-    except:
-        print("Please enter a suitable date in the required format.")
-    else:
-        if str_to_date < date(1999, 1, 4) or str_to_date > date.today():
-            print("The date entered is outside the range of dates available. \nPlease enter a date between 1999-01-04 and today, {}.".format(date.today()))
-            continue
-        else:
-            break
-
-response = requests.get(f'''https://api.frankfurter.app/latest?amount={amount}&date={str_to_date}&from={from_currency}&to={to_currency}''')
+response = requests.get(f'''https://api.frankfurter.app/latest?amount={amount}&from={from_currency}&to={to_currency}''')
 
 # The line of code below returns a number that indicates the status (200 is OK, 404 is Not Found). 
 # You can read more at this link: https://www.geeksforgeeks.org/response-status_code-python-requests/
 print('Status code: {}'.format(response.status_code)) 
 
 # output (amount in converted currency)
-print(f'''{amount} {from_currency} is {response.json()['rates'][to_currency]} {to_currency} on {rate_date}''')
+print(f'''Per today's exchange rate, {amount} {from_currency} is {response.json()['rates'][to_currency]} {to_currency}.''')
