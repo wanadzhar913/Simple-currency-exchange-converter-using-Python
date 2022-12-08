@@ -4,4 +4,4 @@ I came across a simple online tutorial for how to create a currency exchange con
 
 *"Open-source API for current and historical foreign exchange rates published by the European Central Bank (ECB)."*
 
-I have since modified the code with more robust exception handling and limited the currencies that can be converted per ECB's list of available currencies.
+I have since modified the code with more robust exception handling and limited the currencies that can be converted (as per ECB's list of available currencies).
