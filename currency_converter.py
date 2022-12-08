@@ -1,4 +1,4 @@
-# We'll be using the 'requests' library and 'datetime' module from python.
+# We'll be using the 'requests' library from python.
 import requests
 
 # We restrict the type of currencies we can convert from and to. 
@@ -6,19 +6,19 @@ iso_codes = requests.get('https://api.frankfurter.app/currencies')
 iso_codes_only = list(iso_codes.json().keys())
 
 # We now define the variables of interest.
-# Currency to convert from. 
+    # Currency to convert from. 
 from_currency = str(input("Enter in the currency you'd like to convert from: ")).upper()
 while from_currency not in iso_codes_only:
     print('Plese enter a valid country code.')
     from_currency = str(input("Enter in the currency you'd like to convert from: ")).upper()
 
-# Currency to convert to.
+    # Currency to convert to.
 to_currency = str(input("Enter in the currency you'd like to convert to: ")).upper()
 while to_currency not in iso_codes_only:
     print('Plese enter a valid country code.')
     to_currency = str(input("Enter in the currency you'd like to convert from: ")).upper()
 
-# Amount of currency to convert.
+    # Amount of currency to convert.
 while True:
     try:
         amount = float(input("Enter in the amount of money you'd like to convert: "))
