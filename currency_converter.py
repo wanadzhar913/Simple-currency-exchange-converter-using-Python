@@ -1,5 +1,6 @@
 # We'll be using the 'requests' library from python.
 import requests
+import json
 
 # We restrict the type of currencies we can convert from and to. 
 iso_codes = requests.get('https://api.frankfurter.app/currencies')
