@@ -1,4 +1,3 @@
-# We'll be using the 'requests' library from python.
 import requests
 import json
 
